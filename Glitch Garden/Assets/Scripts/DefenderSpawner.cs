@@ -4,22 +4,41 @@ using UnityEngine;
 
 public class DefenderSpawner : MonoBehaviour
 {
-    [SerializeField] GameObject defender;
+    Defender defender;
+    bool defenderSet = false;
 
     private void OnMouseDown()
     {
-        SpawnDefender(GetSquareClicked());
+        if (defenderSet)
+        {
+            SpawnDefender(GetSquareClicked());
+        }
+    }
+
+    public void SetSelectedDefender(Defender selectedDefender)
+    {
+        defender = selectedDefender;
+        defenderSet = true;
     }
     
     private void SpawnDefender(Vector2 mousePos)
     {
-        GameObject newDefender = Instantiate(defender, mousePos , Quaternion.identity) as GameObject;
+        Defender newDefender = Instantiate(defender, mousePos , Quaternion.identity) as Defender;
+    }
+
+    private Vector2 SnapToGrip(Vector2 rawWorldPos)
+    {
+        float newX = Mathf.RoundToInt(rawWorldPos.x);
+        float newY = Mathf.RoundToInt(rawWorldPos.y);
+
+        return new Vector2(newX, newY);
     }
 
     private Vector2 GetSquareClicked()
     {
         Vector2 clickPos = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
         Vector2 worldPos = Camera.main.ScreenToWorldPoint(clickPos);
-        return worldPos;
+        Vector2 gridPos = SnapToGrip(worldPos);
+        return gridPos;
     }
 }
