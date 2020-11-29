@@ -6,12 +6,18 @@ public class DefenderSpawner : MonoBehaviour
 {
     Defender defender;
     bool defenderSet = false;
+    StarDisplay starDisplay;
+
+    private void Start()
+    {
+        starDisplay = FindObjectOfType<StarDisplay>();
+    }
 
     private void OnMouseDown()
     {
         if (defenderSet)
         {
-            SpawnDefender(GetSquareClicked());
+            AttemptToPlaceDefenderAt(GetSquareClicked());
         }
     }
 
@@ -24,6 +30,8 @@ public class DefenderSpawner : MonoBehaviour
     private void SpawnDefender(Vector2 mousePos)
     {
         Defender newDefender = Instantiate(defender, mousePos , Quaternion.identity) as Defender;
+
+        starDisplay.SpendStars(defender.GetCost());
     }
 
     private Vector2 SnapToGrip(Vector2 rawWorldPos)
@@ -40,5 +48,15 @@ public class DefenderSpawner : MonoBehaviour
         Vector2 worldPos = Camera.main.ScreenToWorldPoint(clickPos);
         Vector2 gridPos = SnapToGrip(worldPos);
         return gridPos;
+    }
+
+    public void AttemptToPlaceDefenderAt(Vector2 pos)
+    {
+        int defenderCost = defender.GetCost();
+
+        if(starDisplay.GetStarsAmount() >= defenderCost)
+        {
+            SpawnDefender(pos);            
+        }
     }
 }

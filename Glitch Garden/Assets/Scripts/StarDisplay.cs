@@ -22,7 +22,7 @@ public class StarDisplay : MonoBehaviour
 
     public void AddStars()
     {
-        stars += 200;
+        stars += 50;
         UpdateDisplay();
     }
 
@@ -33,5 +33,10 @@ public class StarDisplay : MonoBehaviour
             stars -= cost;
             UpdateDisplay();
         }
+    }
+
+    public int GetStarsAmount()
+    {
+        return stars;
     }
 }
