@@ -12,7 +12,7 @@ public class AttackerSpawner : MonoBehaviour
     {
         while(spawn)
         {
-            yield return new WaitForSeconds(Random.Range(1, 5));
+            yield return new WaitForSeconds(Random.Range(12, 12));
 
             SpawnAttacker();
         }
