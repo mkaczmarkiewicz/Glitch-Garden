@@ -34,7 +34,7 @@ public class Shooter : MonoBehaviour
 
         foreach (AttackerSpawner spawner in spawners)
         {
-            bool isInTheSameLane = Mathf.Abs(spawner.transform.position.y - transform.position.y) <= Mathf.Epsilon + 0.1;
+            bool isInTheSameLane = Mathf.Abs( (spawner.transform.position.y) - transform.position.y) < 0.100001f;
             //to 0.1 jest takim rozwiązaniem na trytytkę, bo ten skrypt znajduje się na dziecku "Body" które jest przesunięte względem rodzica o 0.1
             if (isInTheSameLane)
             {

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class StarDisplay : MonoBehaviour
 {
 
-    int stars = 0;
+    int stars = 1000;
     Text starText;
     // Start is called before the first frame update
     void Start()
