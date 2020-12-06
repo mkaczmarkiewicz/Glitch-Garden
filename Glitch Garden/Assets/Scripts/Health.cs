@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] GameObject deathVFX;
+   // [SerializeField] GameObject deathVFX;
 
     int health = 1;
 
@@ -18,7 +18,7 @@ public class Health : MonoBehaviour
         }
     }
 
-    private void DealDamage()
+    public void DealDamage()
     {
         health--;
 
@@ -28,7 +28,7 @@ public class Health : MonoBehaviour
 
     private void Die()
     {
-        Destroy(Instantiate(deathVFX, transform.position, transform.rotation), 2f);
+       // Destroy(Instantiate(deathVFX, transform.position, transform.rotation), 2f);
 
         Destroy(this.gameObject);
     }

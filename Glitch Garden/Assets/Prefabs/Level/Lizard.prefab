@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1699988500212139596}
   - component: {fileID: 8475279314648032066}
   - component: {fileID: 1018401317}
+  - component: {fileID: 166249620}
   m_Layer: 0
   m_Name: Lizard
   m_TagString: Attacker
@@ -127,7 +128,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45d1bf011d64a604889835a7eba89def, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathVFX: {fileID: 1906222994913036, guid: 740c2b3187d56c341b8cb78e8aa925c5, type: 3}
 --- !u!212 &1018401317
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -178,6 +178,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &166249620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 587037834643783895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d41d723e9d218084eb6722b62c28f30b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8608173345667212864
 GameObject:
   m_ObjectHideFlags: 0

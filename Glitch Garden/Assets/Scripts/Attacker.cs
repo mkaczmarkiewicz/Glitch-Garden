@@ -19,10 +19,7 @@ public class Attacker : MonoBehaviour
     {
         transform.Translate(Vector2.left * Time.deltaTime * speed);
 
-        if (myAnimator.GetBool("isAttacking"))
-        {
-            Attack();
-        }
+        StopAttacking();      
     }
 
     public void SetSpeed(float newSpeed)
@@ -32,20 +29,38 @@ public class Attacker : MonoBehaviour
 
     public void Attack()
     {
-        //atakuj currentTarget;
+        if (!currentTarget)
+            return;
+        else
+        {
+            Health targetHealth = currentTarget.GetComponent<Health>();
+
+            if (targetHealth)
+            {
+                targetHealth.DealDamage();
+            }
+        }
     }
 
-    public void StopAttacking()
+    public virtual void StopAttacking()
     {
-        myAnimator.SetBool("isAttacking", false);
+        if (!currentTarget)
+        {
+            myAnimator.SetBool("isAttacking", false);
+        }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    /*private void OnTriggerEnter2D(Collider2D collision)
     {    
         if (collision.gameObject.tag == "Defender")
         {
-            currentTarget = collision.gameObject;
-            myAnimator.SetBool("isAttacking", true);
+            SetTargetToAttack(collision.gameObject);          
         }
+    }*/
+
+    public void SetTargetToAttack(GameObject target)
+    {
+        currentTarget = target;
+        myAnimator.SetBool("isAttacking", true);
     }
 }

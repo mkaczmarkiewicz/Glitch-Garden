@@ -6,7 +6,7 @@ public class AttackerSpawner : MonoBehaviour
 {
     bool spawn = true;
 
-    [SerializeField] Attacker attackerPrefab;
+    [SerializeField] Attacker[] attackerPrefab;
 
     IEnumerator Start()
     {
@@ -25,7 +25,9 @@ public class AttackerSpawner : MonoBehaviour
 
     void SpawnAttacker()
     {
-        Attacker newAttacker = Instantiate(attackerPrefab, transform.position, transform.rotation) as Attacker;
+        int range = Random.Range(0, attackerPrefab.Length);
+
+        Attacker newAttacker = Instantiate(attackerPrefab[range], transform.position, transform.rotation) as Attacker;
 
         newAttacker.transform.parent = transform;
     }
