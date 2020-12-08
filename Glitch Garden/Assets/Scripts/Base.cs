@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class Base : MonoBehaviour
 {
-    int health = 5;
+    int health;
 
     [SerializeField] Text textHealth;
     [SerializeField] GameObject loseScreen;
@@ -15,9 +15,10 @@ public class Base : MonoBehaviour
     [SerializeField] GameObject starDisplay;
 
     private void Start()
-    {
-        UpdateHealthScore();
+    {       
         loseScreen.SetActive(false);
+        health = PlayerPrefsController.GetDifficulty();
+        UpdateHealthScore();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -26,6 +27,7 @@ public class Base : MonoBehaviour
         {
             health--;
             UpdateHealthScore();
+            Destroy(collision.gameObject);
         }
 
         if (health <= 0)
