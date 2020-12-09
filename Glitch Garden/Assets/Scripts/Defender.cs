@@ -21,4 +21,6 @@ public class Defender : MonoBehaviour
     {
         return cost;
     }
+
+    
 }
